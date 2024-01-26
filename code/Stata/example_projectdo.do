@@ -36,8 +36,11 @@
 * Define root folder globals
 
 * example for me for a different project
-    if `"`c(rbrnhm)'"' == "rbrnhm" {
-        global 		code  	""C:/Users/rbrnhm/Documents/GitHub/AREC-596-Spring2024/code/Stata
+    if `"`c(username)'"' == "annal" {
+        global 		code  	"C:/Users/aljosephson/git/mismeasure_weather"
+		
+	if `"`c(rbrnhm)'"' == "rbrnhm" {
+        global 		code  	"C:/Users/rbrnhm/Documents/GitHub/AREC-596-Spring2024/code/Stata"	
 
     }
 	
