@@ -36,9 +36,13 @@
 * Define root folder globals
 
 * example for me for a different project
+
+    if `"`c(username)'"' == "annal" {
+        global 		code  	"C:/Users/aljosephson/git/AREC-596-Spring2024/code/Stata"
+
     if `"`c(username)'"' == "JBRON-DESKTOP" {
         global 		code  	"C:\Users\jbron\OneDrive - University of Arizona\Documents\School\AREC-596-Spring2024\code\Stata"
-    }
+
 	
 * **********************************************************************
 * 0 (b) - Check if any required packages are installed:
