@@ -30,7 +30,7 @@
     # all file and directory operations will be relative to this path
     
 # global directory
-    global_path <- "/path/to/your/directory"
+    global_path <- "C:\Users\pavan\Documents\GitHub\AREC-596-Spring2024\code\R\example_projectdo.R"
     # use this variable throughout your script
     
 # ######################################################################
