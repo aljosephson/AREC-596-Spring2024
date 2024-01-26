@@ -55,7 +55,7 @@
     # This is specific for the package installed 
     
     # Load with library function to check version: 
-    library(packageName, lib.loc = "path/to/library")
+    library(packageName, lib.loc = "/Users/noelbell/Documents/GitHub/AREC-596-Spring2024/code/R")
     ## replace packageName with your package 
     ## replace "path/to/library" with path to library 
     
