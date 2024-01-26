@@ -26,7 +26,7 @@
 # can use either - suggest wd  
 
 # set a working directory     
-    setwd("/path/to/your/directory")
+    setwd("/Users/rodrigoguerra/Library/CloudStorage/OneDrive-UniversityofArizona/Documents/GitHub/AREC-596-Spring2024/code/R/example_projectdo.R")
     # all file and directory operations will be relative to this path
     
 # global directory
