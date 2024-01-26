@@ -37,8 +37,8 @@
 
 * example for me for a different project
     if `"`c(username)'"' == "annal" {
-        global 		code  	"C:/Users/aljosephson/git/mismeasure_weather"
-		global 		data	"C:/Users/aljosephson/OneDrive - University of Arizona/weather_project"
+        global 		code  	"C:/Users/aljosephson/git/AREC-596-Spring2024/code/Stata"
+		
     }
 	
 * **********************************************************************
