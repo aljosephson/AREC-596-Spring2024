@@ -7,15 +7,12 @@
 *.rar
 *.stpr
 *.smcl
-*.pdf
 *.sty
 *.png
 *.smcl
 *.docx
 *.html
 
-# Files to ignore: Other
-*.pptx
 
 # Files to ignore: R 
 ## History files
