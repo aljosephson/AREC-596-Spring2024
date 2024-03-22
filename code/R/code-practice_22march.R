@@ -15,7 +15,13 @@
   
 # set your directory - either through using a project do or just using cd 
 
-### HERE ###
+# set a working directory     
+  setwd("/Users/rodrigoguerra/Library/CloudStorage/OneDrive-UniversityofArizona/Documents/GitHub/AREC-596-Spring2024")
+# all file and directory operations will be relative to this path
+
+# global directory
+global_path <- "/path/to/your/directory"
+# use this variable throughout your script
   
 # read in the file 
 
