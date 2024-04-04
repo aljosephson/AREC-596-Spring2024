@@ -3,7 +3,7 @@
 # AREC596 - coding practice + using github
 # file created: 22 march 2024
 # filed edited: 22 march 2024
-# last edit: alj 
+# last edit: Ksav
 
 # if you need to do an exercise, look for something labeled with "### HERE ###"
 
@@ -15,11 +15,31 @@
   
 # set your directory - either through using a project do or just using cd 
 
-### HERE ###
-  
+setwd("/Users/keshavbhusal/Desktop/AREC/AREC 596 SEMINAR/AREC-596-Spring2024-Ksav")
+
+# Verify that the working directory has been set correctly
+getwd()
+
+# 1.Read in the file from local directory
+library(haven)
+VDSA_Prod_Data <- read_dta("VDSA_Prod_Data.dta")
+
+# 2. Loading the file directly from the github repository
+
+# URL of the raw .dta file on GitHub
+url <- "https://github.com/aljosephson/AREC-596-Spring2024/raw/Ksav/VDSA_Prod_Data.dta"
+
+# Load the .dta file directly from the GitHub URL. Install and load the necessary packages
+# install.packages("rio")
+  library(rio)
+
+# Loading
+data <- import(url)
+
 # read in the file 
 
-### HERE ###
+View(VDSA_Prod_Data)
+View(data)
   
 ##############################################################################
 ##############################################################################
