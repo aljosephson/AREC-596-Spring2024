@@ -2,8 +2,8 @@
   
 # AREC596 - coding practice + using github
 # file created: 22 march 2024
-# filed edited: 22 march 2024
-# last edit: Ksav
+# filed edited: 4 April 2024
+# last edit: Keshav
 
 # if you need to do an exercise, look for something labeled with "### HERE ###"
 
@@ -13,6 +13,17 @@
 ##############################################################################
 ##############################################################################
   
+#Setting up the environment
+library(rio)
+library(ggplot2)  
+library(dplyr)            
+library(tidyr)  
+library(readr)
+library(VIM)
+library(zoo)
+library(haven)
+library(logr)
+
 # set your directory - either through using a project do or just using cd 
 
 setwd("/Users/keshavbhusal/Desktop/AREC/AREC 596 SEMINAR/AREC-596-Spring2024-Ksav")
@@ -21,7 +32,7 @@ setwd("/Users/keshavbhusal/Desktop/AREC/AREC 596 SEMINAR/AREC-596-Spring2024-Ksa
 getwd()
 
 # 1.Read in the file from local directory
-library(haven)
+
 VDSA_Prod_Data <- read_dta("VDSA_Prod_Data.dta")
 
 # 2. Loading the file directly from the github repository
@@ -30,8 +41,6 @@ VDSA_Prod_Data <- read_dta("VDSA_Prod_Data.dta")
 url <- "https://github.com/aljosephson/AREC-596-Spring2024/raw/Ksav/VDSA_Prod_Data.dta"
 
 # Load the .dta file directly from the GitHub URL. Install and load the necessary packages
-# install.packages("rio")
-  library(rio)
 
 # Loading
 data <- import(url)
@@ -51,7 +60,8 @@ View(data)
 # create log-file 
 ### this is non standard in r, so you'll want to ensure to install the package logr
 
-  install.packages('logr')
+install.packages('logr')
+
 
 # create temp file location
   
@@ -60,15 +70,41 @@ View(data)
 # open log
   lf <- log_open(tmp)
 
-# tell me about these variables: output lab_q fert_q irr_q mech_v pest_v
+# Tell me about these variables: output lab_q fert_q irr_q mech_v pest_v
+dim(VDSA_Prod_Data) # Dimension of the dataset
 
-### HERE ###
+str(VDSA_Prod_Data) # Structure of the variables
+
+summary(VDSA_Prod_Data)    #Summary of the variables
+
+
+# Selecting the variables
+variable_of_interest <- c("output", "lab_q", "fert_q", "irr_q", "mech_v", "pest_v")
+
+# Subsetting the variables of interest
+subset_data <- VDSA_Prod_Data[, variable_of_interest]
+
+# Generating the structure of variables of interest
+str(subset_data)
+
+# Generating the summary of variables of interest
+summary(subset_data)
   
 # we hypothesize that gender is important here
 # find a few ways to tell me about the variables above, differentiated by gender (genderH) 
 
-### HERE ###
-  
+variable_of_interest <- c("genderH", "output", "lab_q", "fert_q", "irr_q", "mech_v", "pest_v")
+
+subset_data <- VDSA_Prod_Data[, variable_of_interest]
+
+# summary stats of variable of interest by gender
+summary_stats <- subset_data %>%
+  group_by(genderH) %>%
+  summarise(across(everything(), list(mean = mean, max = max, min = min), .names = "{.col}_{.fn}")) %>%
+  ungroup()
+
+summary_stats
+
 # to do anything with these data, we need to do some manipulations 
 
 # look at the variable sur_yr 
