@@ -5,8 +5,6 @@
 # filed edited: 4 April 2024
 # last edit: Keshav
 
-# if you need to do an exercise, look for something labeled with "### HERE ###"
-
 ##############################################################################
 ##############################################################################
   # 0 - set up, read in file
@@ -23,6 +21,7 @@ library(VIM)
 library(zoo)
 library(haven)
 library(logr)
+library(labelled)
 
 # set your directory - either through using a project do or just using cd 
 
@@ -59,9 +58,6 @@ View(data)
 # create do-file
 # create log-file 
 ### this is non standard in r, so you'll want to ensure to install the package logr
-
-install.packages('logr')
-
 
 # create temp file location
   
@@ -110,24 +106,53 @@ summary_stats
 # look at the variable sur_yr 
 # drop if the year is 2009 or 2013
 
-### HERE ###
-  
+VDSA_Prod_Data1 <- VDSA_Prod_Data %>% 
+  filter(!(sur_yr %in% c("2009", "2013")))
+
+# Verifying the drop
+unique(VDSA_Prod_Data1["sur_yr"])
+
 # make new variables for lab_q fert_q irr_q mech_v pest_v
 # these should be measured as logs per hectare 
     
-### HERE ###
+VDSA_Prod_Data1 <- VDSA_Prod_Data1 %>% 
+  mutate(lab_log_per_ha = log(lab_q)/plot_area,
+           fert_log_per_ha = log(fert_q)/plot_area,
+           irr_log_per_ha = log(irr_q)/plot_area,
+           mech_log_per_ha = log(mech_v)/plot_area,
+           pest_log_per_ha = log(pest_v)/plot_area)
     
 # make new variables for aindex lindex tot_acre dist
 # these should be log transformed 
 
 # create log transformed variables
 
-### HERE ###
+VDSA_Prod_Data1 <- VDSA_Prod_Data1 %>% 
+  mutate(aindex_log = log(aindex),
+         lindex_log = log(lindex),
+         tot_acre_log = log(tot_acre),
+         dist_log = log(dist))
   
 # labeling variables created above
+# Install and load the Hmisc package if you haven't already
+install.packages("Hmisc")
+library(Hmisc)
 
-### HERE ###
-  
+# Assuming 'VDSA_Prod_Data1' is your dataset
+
+VDSA_Prod_Data2 <- VDSA_Prod_Data1 %>%
+  label(aindex_log = "Log of Aindex",
+        lindex_log = "Log of Lindex",
+        tot_acre_log = "Log of Total Acres",
+        dist_log = "Log of Distance",
+        lab_log_per_ha = "Log of Lab q per Hectare",
+        fert_log_per_ha = "Log of Fert q per Hectare",
+        irr_log_per_ha = "Log of Irr q per Hectare",
+        mech_log_per_ha = "Log of Mech v per Hectare",
+        pest_log_per_ha = "Log of Pest v per Hectare")
+
+labels(VDSA_Prod_Data2)
+
 ##############################################################################
 ##############################################################################
   # 2 - dig into the data
@@ -138,12 +163,36 @@ summary_stats
 # look at these with relationship to output
 # consider: plot_area, lab_q irr_q pest_q 
 
-### HERE ###
+# Scatterplot for plot_area vs. output
+
+ggplot(VDSA_Prod_Data1, aes(x = plot_area, y = output)) +
+  geom_point() +
+  labs(x = "Plot Area", y = "Output") +
+  ggtitle("Scatterplot of Plot Area vs. Output")
+
+# Scatterplot for lab_q vs. output
+ggplot(VDSA_Prod_Data1, aes(x = lab_q, y = output)) +
+  geom_point() +
+  labs(x = "Lab Q", y = "Output") +
+  ggtitle("Scatterplot of Lab Q vs. Output")
+
+# Scatterplot for irr_q vs. output
+ggplot(VDSA_Prod_Data1, aes(x = irr_q, y = output)) +
+  geom_point() +
+  labs(x = "Irr Q", y = "Output") +
+  ggtitle("Scatterplot of Irrigation Q vs. Output")
+
+# Scatterplot for pest_q vs. output
+ggplot(VDSA_Prod_Data1, aes(x = pest_v, y = output)) +
+  geom_point() +
+  labs(x = "Pest V", y = "Output") +
+  ggtitle("Scatterplot of Pest V vs. Output")
+
   
 # create an irrigation dummy
+VDSA_Prod_Data1 <- VDSA_Prod_Data1 %>%
+  mutate(irrigation_dum = if_else(irr_q == 0, 0, 1))
 
-### HERE ###
-  
 ##############################################################################
 ##############################################################################
   # 3 - end matter, save, close, etc.  
@@ -151,12 +200,9 @@ summary_stats
 ##############################################################################
   
 # save this file 	
-
-### HERE ###
-  
+write_dta(VDSA_Prod_Data1, "VDSA_Prod_Data1_modified.dta")
   
 # close log
-
-    log_close(tmp)
+log_close(tmp)
 
 ## END ## 	
