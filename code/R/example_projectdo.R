@@ -26,7 +26,7 @@
 # can use either - suggest wd  
 
 # set a working directory     
-    setwd("/path/to/your/directory")
+    setwd("/Users/keshavbhusal/Documents/GitHub/AREC-596-Spring2024/code/R")
     # all file and directory operations will be relative to this path
     
 # global directory
