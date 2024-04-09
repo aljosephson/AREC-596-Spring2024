@@ -7,9 +7,12 @@ Last update: 1 March 2024.
 
 ## Readings
 
+Readings are available in the subfolder "Readings".  
+
 ## Code
 
 ## Recommended GitHub Skills 
+
 There are a number of excellent resources available on the Git and GitHub learning resources: https://docs.github.com/en/get-started/quickstart/git-and-github-learning-resources.
 This includes the extensive skills page: https://skills.github.com/
 
