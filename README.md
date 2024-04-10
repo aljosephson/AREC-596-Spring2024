@@ -11,6 +11,8 @@ Readings are available in the subfolder "Readings".
 
 ## Code
 
+Sample code for R and Stata are available in the subfolder "Code". 
+
 ## Recommended GitHub Skills 
 
 There are a number of excellent resources available on the Git and GitHub learning resources: https://docs.github.com/en/get-started/quickstart/git-and-github-learning-resources.
