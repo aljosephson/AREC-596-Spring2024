@@ -13,6 +13,9 @@
 *.docx
 *.html
 
+*.DS_Store
+
+
 
 # Files to ignore: R 
 ## History files
