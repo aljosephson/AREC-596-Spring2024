@@ -5,9 +5,9 @@ This repository is the repository for AREC596 in the Spring of 2024. If you are 
 
 Last update: 1 March 2024. 
 
-## Readings
+## Readings and Slides
 
-Readings are available in the subfolder "Readings".  
+Readings are available in the subfolder "Readings". Slides are available in the subflower "Slides". 
 
 ## Code
 
