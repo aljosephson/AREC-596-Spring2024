@@ -1,7 +1,7 @@
 # AREC-596-Spring2024
-GitHub Repo for AREC596 in Spring of 2024
+GitHub Repo for AREC596 in Spring of 2024 at the University of Arizona.
 
-This repository is the repository for AREC596 in the Spring of 2024. If you are looking to gain access, please email: aljosephson@arizona.edu. 
+This repository is the repository for AREC596 in the Spring of 2024. 
 
 Last update: 22 March 2024. 
 Course concludes: 1 May 2024. 
